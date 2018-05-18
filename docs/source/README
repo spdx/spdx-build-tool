@@ -1,0 +1,5 @@
+Run `sphinx-apidoc -o . ../../spdx_build_tool' in this directory.
+
+This will generate `modules.rst' and `spdx_build_tool.rst'.
+
+Then include `modules.rst' in your `index.rst' file.

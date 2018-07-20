@@ -1,0 +1,2 @@
+react@15.4.1
+react-bootstrap@^0.31.5

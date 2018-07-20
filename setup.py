@@ -6,6 +6,10 @@ import sys
 import imp
 import subprocess
 
+
+# Project root
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 ## Python 2.6 subprocess.check_output compatibility. Thanks Greg Hewgill!
 if 'check_output' not in dir(subprocess):
     def check_output(cmd_args, *args, **kwargs):
@@ -266,12 +270,8 @@ setup_dict = dict(
     zip_safe=False,  # don't use eggs
     entry_points={
         'console_scripts': [
-            'spdx_build_tool_cli = spdx_build_tool.main:entry_point'
+            'spdx-build = analyser.main:entry_point',
         ],
-        # if you have a gui, use this
-        # 'gui_scripts': [
-        #     'spdx_build_tool_gui = spdx_build_tool.gui:entry_point'
-        # ]
     }
 )
 

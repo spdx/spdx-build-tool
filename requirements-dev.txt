@@ -1,24 +1,44 @@
-# Runtime requirements
---requirement requirements.txt
-
-# Testing
-pytest==2.5.1
-py==1.4.19
-mock==1.0.1
-
-# Linting
-flake8==2.1.0
-mccabe==0.2.1
-pep8==1.4.6
-pyflakes==0.7.3
-
-# Documentation
-Sphinx==1.2
+aiofiles==0.3.2
+aiohttp==2.3.1
+async-timeout==3.0.0
+asyncio==3.4.3
+attrs==18.1.0
+backcall==0.1.0
+chardet==3.0.4
+click==6.7
+colorama==0.2.7
+decorator==4.3.0
 docutils==0.11
+fasteners==0.14.1
+flake8==2.1.0
+idna==2.6
+idna-ssl==1.0.1
+ipython==6.4.0
+ipython-genutils==0.2.0
+jedi==0.12.0
 Jinja2==2.7.1
 MarkupSafe==0.18
-Pygments==1.6
-
-# Miscellaneous
+mccabe==0.2.1
+mock==1.0.1
+monotonic==1.5
+multidict==4.3.1
+npm==0.1.1
+optional-django==0.1.0
+parso==0.2.1
 Paver==1.2.1
-colorama==0.2.7
+pep8==1.4.6
+pexpect==4.5.0
+pickleshare==0.7.4
+prompt-toolkit==1.0.15
+ptyprocess==0.5.2
+py==1.4.19
+pyflakes==2.0.0
+Pygments==1.6
+pytest==2.5.1
+semver==2.8.0
+simplegeneric==0.8.1
+six==1.11.0
+Sphinx==1.2
+traitlets==4.3.2
+wcwidth==0.1.7
+yarl==1.2.4

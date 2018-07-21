@@ -10,7 +10,7 @@ import aiohttp
 import aiofiles
 import fasteners
 from .utils import npm_utils
-from utils.utils import TEMP_DIR, create_tmp_dir, normalize_path
+from utils.utils import TEMP_DIR, create_tmp_dir, normalize_path, print_to_command_line, is_connected
 from .logger import log
 import tarfile
 import codecs
@@ -236,4 +236,8 @@ class MultiPackageDownloader:
     @staticmethod
     def _packages_downloader(packages, download_dir):
         package_downloader = NpmPackageDownloader()
-        package_downloader.download_multiple(packages)
+        if is_connected():
+            package_downloader.download_multiple(packages)
+        else:
+            print_to_command_line("You are not online, we cannot download project dependencies. You need to be online.", "failure")
+            return

@@ -16,7 +16,8 @@ from setup import setup_dict
 
 def build_tool_to_analyser_method(build_tool):
     """
-    This method shall call the analyser method corresponding to the build tool(s) being used by the software package"""
+    This method shall call the analyser method corresponding to the build
+    tool(s) being used by the software package"""
     return
 
 

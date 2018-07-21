@@ -6,7 +6,8 @@ import os
 import json
 import warnings
 import re
-from utils.utils import print_to_command_line, normalize_file_path, normalize_path
+from utils.utils import (print_to_command_line, normalize_file_path,
+                        normalize_path)
 
 
 class NpmFileParser(object):
@@ -59,4 +60,5 @@ class NpmFileParser(object):
             for name in os.listdir(parent_dir):
                 if os.path.isdir('{0}/{1}'.format(parent_dir, name)):
                     if name == "node_modules":
-                        self.node_modules_dir = normalize_path('{0}/{1}'.format(parent_dir, name))
+                        self.node_modules_dir = normalize_path('{0}/{1}'.format(
+                        parent_dir, name))

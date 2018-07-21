@@ -1,5 +1,7 @@
 from __future__ import print_function, unicode_literals
-from utils.utils import SUPPORTED_BUILD_TOOLS, determine_build_tool, check_file_in_dir, print_to_command_line, FILES_TO_PARSE_PER_TOOL
+from utils.utils import (SUPPORTED_BUILD_TOOLS, determine_build_tool,
+                        check_file_in_dir, print_to_command_line,
+                        FILES_TO_PARSE_PER_TOOL)
 from analyser.parsers.pip import PipFileParser
 from downloader.pip import PipPkgDownloader
 from scanner.main import PkgScanner
@@ -23,7 +25,8 @@ class PipPackageManager(object):
         print_to_command_line("Project directory", "title")
         print_to_command_line(self.project_dir, "information")
         for file_name_to_check in self.files_to_check:
-            self.files_to_parse.append(check_file_in_dir(self.project_dir, file_name_to_check))
+            self.files_to_parse.append(
+            check_file_in_dir(self.project_dir, file_name_to_check))
         self.parse_pip_file()
 
     def parse_pip_file(self):

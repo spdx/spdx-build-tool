@@ -197,7 +197,8 @@ def _test_all():
 
     :return: exit code
     """
-    return _lint() + _test()
+    # return _lint() + _test()
+    return _test()
 
 
 # The following code is to allow tests to be run with `python setup.py test'.

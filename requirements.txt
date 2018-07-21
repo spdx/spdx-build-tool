@@ -2,6 +2,7 @@ aiofiles==0.3.2
 aiohttp==2.3.1
 async-timeout==3.0.0
 asyncio==3.4.3
+atomicwrites==1.1.5
 attrs==18.1.0
 backcall==0.1.0
 chardet==3.0.4
@@ -21,6 +22,7 @@ MarkupSafe==0.18
 mccabe==0.2.1
 mock==1.0.1
 monotonic==1.5
+more-itertools==4.2.0
 multidict==4.3.1
 npm==0.1.1
 optional-django==0.1.0
@@ -29,15 +31,18 @@ Paver==1.2.1
 pep8==1.4.6
 pexpect==4.5.0
 pickleshare==0.7.4
+pkg-resources==0.0.0
+pluggy==0.6.0
 prompt-toolkit==1.0.15
 ptyprocess==0.5.2
-py==1.4.19
+py==1.5.4
 pyflakes==2.0.0
 Pygments==1.6
-pytest==2.5.1
+pytest==3.6.3
 semver==2.8.0
 simplegeneric==0.8.1
 six==1.11.0
+-e git+https://github.com/ndip007/spdx-build-tool.git@4e99dddcf7c5a81af12383f34fe3fe4bd7c0b443#egg=spdx_build_tool
 Sphinx==1.2
 traitlets==4.3.2
 wcwidth==0.1.7

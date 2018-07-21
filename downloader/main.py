@@ -4,10 +4,9 @@
 
 from __future__ import print_function
 
-import argparse
 import sys
-from .npm import MultiPackageDownloader, NpmPackageDownloader
-from .pip import PipPkgDownloader
+# from .npm import MultiPackageDownloader, NpmPackageDownloader
+# from .pip import PipPkgDownloader
 
 
 
@@ -21,8 +20,8 @@ def main(argv):
     # print("argv", argv)
     # downloader = NpmPackageDownloader()
     # downloader.download('react', version='15.4.1')
-    req_file_dir = '/home/mikael/Desktop/projects/magazine_env/magazine/backend/requirements.txt'
-    downloader = PipPkgDownloader(req_file_dir, "")
+    # req_file_dir = '/home/ndip007/Desktop/projects/magazine_env/magazine/backend/requirements.txt'
+    # downloader = PipPkgDownloader(req_file_dir, "")
     return
 
 

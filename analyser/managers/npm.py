@@ -1,10 +1,8 @@
 from __future__ import print_function, unicode_literals
-from utils.utils import (SUPPORTED_BUILD_TOOLS, determine_build_tool,
-                        check_file_in_dir, print_to_command_line,
-                        FILES_TO_PARSE_PER_TOOL, normalize_path,
-                        normalize_file_path, TEMP_DIR)
+from utils.utils import (check_file_in_dir, print_to_command_line,
+                        FILES_TO_PARSE_PER_TOOL)
 from analyser.parsers.npm import NpmFileParser
-from downloader.npm import MultiPackageDownloader, NpmPackageDownloader
+from downloader.npm import MultiPackageDownloader
 from scanner.main import PkgScanner
 
 
@@ -50,4 +48,4 @@ class NpmPackageManager(object):
         self.scan_pkg(self.project_dir)
 
     def scan_pkg(self, pkg_dir):
-        scanner = PkgScanner(pkg_dir)
+        PkgScanner(pkg_dir)

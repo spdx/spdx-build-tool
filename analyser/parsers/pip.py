@@ -1,8 +1,5 @@
 from __future__ import print_function, unicode_literals
-import glob
-import fnmatch
 import os
-import json
 import warnings
 import re
 from utils.utils import print_to_command_line
@@ -48,8 +45,7 @@ class PipFileParser(object):
         """Parse the setup.py file"""
 
     def set_pip_info(self):
-        json_info = self.parse_file()
-        # print(json_info)
+        self.parse_file()
         return
 
 
@@ -305,7 +301,7 @@ class Requirement(object):
             # This is a requirement specifier.
             # Delegate to pkg_resources and hope for the best
             req.specifier = True
-            pkg_req = Req.parse(line)
+            pkg_req = req.parse(line)
             req.name = pkg_req.unsafe_name
             req.extras = list(pkg_req.extras)
             req.specs = pkg_req.specs

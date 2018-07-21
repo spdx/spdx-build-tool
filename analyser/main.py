@@ -10,7 +10,6 @@ from utils.utils import (determine_build_tool,
 normalize_path, print_to_command_line)
 from analyser.managers.npm import NpmPackageManager
 from analyser.managers.pip import PipPackageManager
-from optparse import OptionParser
 from setup import setup_dict
 
 
@@ -26,10 +25,10 @@ def analyse_dir(verbose, package_dir):
     project_info = determine_build_tool(normalize_path(package_dir))
     if "npm" in project_info[0]:
         print_to_command_line("NPM Project", "success")
-        npm_deps = NpmPackageManager(normalize_path(package_dir))
+        NpmPackageManager(normalize_path(package_dir))
     if "pip" in project_info[0]:
         print_to_command_line("Python Project", "success")
-        pip_deps = PipPackageManager(normalize_path(package_dir))
+        PipPackageManager(normalize_path(package_dir))
     return project_info
 
 

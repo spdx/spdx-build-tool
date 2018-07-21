@@ -3,12 +3,9 @@ from __future__ import unicode_literals
 import glob
 import fnmatch
 import os
-import json
-import warnings
-import re
 # from analyser.parsers.pip import parse_pip_requirement_string
 from colorama import init
-from colorama import Fore, Back, Style
+from colorama import Fore, Back
 from re import compile as compile_regex
 import shutil
 import socket
@@ -170,7 +167,7 @@ def determine_build_tool(project_directory_to_scan):
 def is_connected():
   try:
     host = socket.gethostbyname(REMOTE_SERVER)
-    s = socket.create_connection((host, 80), 2)
+    socket.create_connection((host, 80), 2)
     return True
   except:
      pass

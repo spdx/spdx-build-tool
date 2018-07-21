@@ -9,8 +9,6 @@ import os
 from utils.utils import print_to_command_line, delete_tmp_dir, TEMP_DIR, normalize_path, is_connected, SCANCODE_DOWNLOAD_PATH
 import zipfile
 from setup import ROOT_DIR
-import subprocess
-import socket
 
 
 class PkgScanner:

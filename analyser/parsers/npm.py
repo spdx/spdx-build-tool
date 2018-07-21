@@ -1,11 +1,7 @@
 from __future__ import print_function, unicode_literals
 from __future__ import unicode_literals
-import glob
-import fnmatch
 import os
 import json
-import warnings
-import re
 from utils.utils import (print_to_command_line, normalize_file_path,
                         normalize_path)
 

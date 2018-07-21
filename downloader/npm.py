@@ -1,9 +1,6 @@
 from __future__ import print_function, unicode_literals
-import glob
-import fnmatch
 import os
 import json
-import warnings
 import re
 import multiprocessing
 import aiohttp

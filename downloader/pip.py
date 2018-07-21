@@ -23,7 +23,6 @@ class PipPkgDownloader:
     def download(self):
         # Create setup file before downloading the packages to a directory
         touch_cmd = "touch {0}setup.py".format(normalize_path(self.dest_dir))
-        setup_py = os.popen(touch_cmd).read()
         # Run the Command
         if is_connected():
             cmd_output = os.popen(

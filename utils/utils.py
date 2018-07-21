@@ -11,8 +11,10 @@ from colorama import init
 from colorama import Fore, Back, Style
 from re import compile as compile_regex
 import shutil
+import socket
 
-
+SCANCODE_DOWNLOAD_PATH = "https://github.com/nexB/scancode-toolkit/releases/download/v2.2.1/scancode-toolkit-2.2.1.zip"
+REMOTE_SERVER = "www.google.com"
 TEMP_DIR = 'build_tool_tmp_dir'
 SUPPORTED_BUILD_TOOLS = [
     'npm', 'pip'
@@ -163,3 +165,13 @@ def determine_build_tool(project_directory_to_scan):
             project_type_list.append(
                 FILES_TO_CHECK_PER_BUILD[file_name_to_check])
     return (project_type_list, matching_file_list)
+
+
+def is_connected():
+  try:
+    host = socket.gethostbyname(REMOTE_SERVER)
+    s = socket.create_connection((host, 80), 2)
+    return True
+  except:
+     pass
+  return False

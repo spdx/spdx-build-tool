@@ -6,12 +6,11 @@ from __future__ import print_function
 
 import sys
 import os
-from utils.utils import print_to_command_line, delete_tmp_dir, TEMP_DIR, normalize_path
+from utils.utils import print_to_command_line, delete_tmp_dir, TEMP_DIR, normalize_path, is_connected, SCANCODE_DOWNLOAD_PATH
 import zipfile
 from setup import ROOT_DIR
 import subprocess
-
-SCANCODE_DOWNLOAD_PATH = "https://github.com/nexB/scancode-toolkit/releases/download/v2.2.1/scancode-toolkit-2.2.1.zip"
+import socket
 
 
 class PkgScanner:
@@ -25,15 +24,20 @@ class PkgScanner:
         self.SCANCODE_EXE_PATH = ''
         self.download_scancode()
 
+
     def download_scancode(self):
         download_command = "pip download {0} --no-deps".format(
             SCANCODE_DOWNLOAD_PATH)
         scancode_exists = os.path.exists(self.SCANCODE_PATH)
         if not scancode_exists:
-            os.popen(download_command).read()
-            zip_ref = zipfile.ZipFile("scancode-toolkit-2.2.1.zip", 'r')
-            zip_ref.extractall(".")
-            zip_ref.close()
+            if is_connected():
+                os.popen(download_command).read()
+                zip_ref = zipfile.ZipFile("scancode-toolkit-2.2.1.zip", 'r')
+                zip_ref.extractall(".")
+                zip_ref.close()
+            else:
+                print_to_command_line("You are not online, we cannot download scanner utilites. You need to be online for the first run.", "failure")
+                return
         self.EXTRACT_CODE_PATH = os.path.join(
             self.SCANCODE_PATH, 'extractcode')
         self.CONFIG_PATH = os.path.join(self.SCANCODE_PATH, 'configure')
@@ -48,10 +52,11 @@ class PkgScanner:
     def extract_content_of_temp_dir(self):
         temp_directory = '{0}{1}'.format(
             normalize_path(self.directory_to_scan), TEMP_DIR)
+        os.chdir(os.path.abspath(self.SCANCODE_PATH))
         for filename in os.listdir(temp_directory):
-            extract_str = ".{0} {1}{2}{3}".format(
-                self.EXTRACT_CODE_PATH, normalize_path(
-                    self.directory_to_scan), normalize_path(TEMP_DIR), filename)
+            extract_str = "./extractcode {0}{1}{2}".format(
+                normalize_path(self.directory_to_scan),
+                normalize_path(TEMP_DIR), filename)
             os.popen(extract_str).read()
         return
 

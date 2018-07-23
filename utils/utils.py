@@ -132,18 +132,12 @@ _MULTIPLE_PATHS = compile_regex(r"/{2,}")
 def create_tmp_dir(project_dir):
     temp_directory = '{0}{1}'.format(normalize_path(project_dir), TEMP_DIR)
     os.makedirs(temp_directory, exist_ok=True)
-    print_to_command_line(
-        'Temporary directory was successfully created',
-        'success')
     return
 
 
 def delete_tmp_dir(project_dir):
     temp_directory = '{0}{1}'.format(normalize_path(project_dir), TEMP_DIR)
     shutil.rmtree(temp_directory)
-    print_to_command_line(
-        'Temporary directory was successfully deleted',
-        'information')
     return
 
 
@@ -153,7 +147,6 @@ def determine_build_tool(project_directory_to_scan):
     """
     matching_file_list = []
     project_type_list = []
-
     for file_name_to_check in FILES_TO_CHECK_PER_BUILD.keys():
         matched_list = check_file_in_dir(
             project_directory_to_scan, file_name_to_check)
@@ -161,6 +154,7 @@ def determine_build_tool(project_directory_to_scan):
         if len(matched_list) != 0:
             project_type_list.append(
                 FILES_TO_CHECK_PER_BUILD[file_name_to_check])
+    print(project_type_list, matching_file_list)
     return (project_type_list, matching_file_list)
 
 

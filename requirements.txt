@@ -42,7 +42,6 @@ pytest==3.6.3
 semver==2.8.0
 simplegeneric==0.8.1
 six==1.11.0
--e git+https://github.com/ndip007/spdx-build-tool.git@4e99dddcf7c5a81af12383f34fe3fe4bd7c0b443#egg=spdx_build_tool
 Sphinx==1.2
 traitlets==4.3.2
 wcwidth==0.1.7

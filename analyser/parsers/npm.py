@@ -13,10 +13,11 @@ class NpmFileParser(object):
     and parses it to return the dependencies, alongside valuable info.
     """
 
-    def __init__(self, file_dir):
+    def __init__(self, file_dir, in_tests=False):
         # Do not call this private method
         self.file_dir = normalize_file_path(file_dir)
         self.node_modules_dir = None
+        self.in_tests = in_tests
         self.name = None
         self.version = None
         self.license = None
@@ -27,8 +28,9 @@ class NpmFileParser(object):
         self.node_modules_dir_for_package_json()
 
     def parse_file(self):
-        print_to_command_line("File path", "title")
-        print_to_command_line(self.file_dir, "information")
+        if not self.in_tests:
+            print_to_command_line("File path", "title")
+            print_to_command_line(self.file_dir, "information")
         package_json_content = None
         with open(self.file_dir) as json_data:
             json_deps_data = json.load(json_data)

@@ -12,10 +12,11 @@ class PipFileParser(object):
     and parses it to return the dependencies, alongside valuable info.
     """
 
-    def __init__(self, file_dir):
+    def __init__(self, file_dir, in_tests=False):
         # Do not call this private method
         self.file_dir = file_dir
         self.setup_file = None
+        self.in_tests = in_tests
         self.name = None
         self.version = None
         self.license = None
@@ -24,8 +25,9 @@ class PipFileParser(object):
         self.set_pip_info()
 
     def parse_file(self):
-        print_to_command_line("File path", "title")
-        print_to_command_line(self.file_dir, "success")
+        if not self.in_tests:
+            print_to_command_line("File path", "title")
+            print_to_command_line(self.file_dir, "success")
         try:
             # Python 2.x compatibility
             if not isinstance(self.file_dir, basestring):

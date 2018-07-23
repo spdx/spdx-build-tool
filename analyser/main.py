@@ -13,13 +13,6 @@ from analyser.managers.pip import PipPackageManager
 from setup import setup_dict
 
 
-def build_tool_to_analyser_method(build_tool):
-    """
-    This method shall call the analyser method corresponding to the build
-    tool(s) being used by the software package"""
-    return
-
-
 def analyse_dir(verbose, package_dir):
     npm_deps = []
     project_info = determine_build_tool(normalize_path(package_dir))
@@ -40,9 +33,6 @@ def main(argv):
     """
     # First argument must be the project directory
     # print("argv", argv)
-    print("argv[1]")
-    print(argv)
-    print(argv[1])
     return analyse_dir(True, argv[1])
     epilog = '''
             {project} {version}

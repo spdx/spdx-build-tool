@@ -1,38 +1,7 @@
 {
-  "name": "omaralbeik.com",
+  "name": "spdx-build-tool tests",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
-    "moment": "^2.19.4",
-    "node-sass-chokidar": "0.0.3",
-    "npm-run-all": "^4.1.2",
-    "react": "^16.2.0",
-    "react-bootstrap": "^0.31.5",
-    "react-dom": "^16.2.0",
-    "react-ga": "^2.3.5",
-    "react-helmet": "^5.2.0",
-    "react-loading": "^0.1.4",
-    "react-redux": "^5.0.6",
-    "react-router-bootstrap": "^0.24.4",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.14",
-    "react-share": "^1.18.0",
-    "react-slick": "^0.15.4",
-    "react-time": "^4.3.0",
-    "redux": "^3.7.2",
-    "semantic-ui": "^2.3.1",
-    "semantic-ui-css": "^2.3.1",
-    "semantic-ui-react": "^0.71.4",
-    "truncate": "^2.0.0"
-  },
-  "scripts": {
-    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
-    "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && react-scripts build",
-    "deploy": "rsync --relative --progress -avzhe ssh ./public omaralbeik:/test/",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "moment": "^2.19.4"
   }
 }

@@ -14,6 +14,7 @@ import codecs
 import collections
 import asyncio
 from typing import List, Dict
+from setup import ROOT_DIR
 
 
 class NpmClient:
@@ -25,7 +26,7 @@ class NpmClient:
         self._session = aiohttp.ClientSession(raise_for_status=True)
 
     def close(self):
-        # self._session.close()
+        self._session.close()
         if not self._session.closed:
             if self._session._connector_owner:
                 self._session._connector.close()
@@ -52,6 +53,8 @@ class NpmClient:
         if not npm_utils.is_scoped(name):
             return await self._get_json(npm_utils.build_version_url(name, version))
         content = await self._get_json(npm_utils.build_all_versions_url(name))
+        print("content")
+        print(content)
         return content['versions'][content['dist-tags'][version]]
 
     async def download_tar_ball_of(self, name: str, version: str, download_dir: str):
@@ -132,11 +135,10 @@ class NpmPackage:
 
 class NpmPackageDownloader:
 
-    def __init__(self, max_tasks: int=10):
+    def __init__(self, download_dir, max_tasks: int=10):
         self._client = NpmClient()
-        self._download_dir = TEMP_DIR
+        self._download_dir = download_dir
         self._max_tasks = max_tasks
-        create_tmp_dir()
 
     async def _download_single_package(self, name: str, version: str=None) -> (NpmPackage, bool):
         try:
@@ -149,8 +151,11 @@ class NpmPackageDownloader:
             file_path, was_downloaded = await self._client.download_tar_ball_of(name, version, self._download_dir)
             package_info = NpmPackage(
                 name=name, version=version, file_path=file_path)
+            print("package_info", "was_downloaded")
+            print(package_info, was_downloaded)
             return package_info, was_downloaded
-        except BaseException:
+        except BaseException as e:
+            print(e.message)
             log.error('Error downloading %s', name)
             return (None, False)
 
@@ -206,8 +211,14 @@ class MultiPackageDownloader:
             normalize_path(project_dir), TEMP_DIR)
         self._num_of_workers = num_of_workers
         self._workers = []
+        self.project_dir = project_dir
+        self.node_modules_dir = '{0}node_modules/'.format(
+            normalize_path(project_dir))
         self._package_groups = list(self._group_packages(package_list))
         create_tmp_dir(self.project_dir)
+
+    # def get_local_copy(self, pkg_name):
+
 
     def _group_packages(self, package_list: str):
         packages = package_list
@@ -232,7 +243,7 @@ class MultiPackageDownloader:
 
     @staticmethod
     def _packages_downloader(packages, download_dir):
-        package_downloader = NpmPackageDownloader()
+        package_downloader = NpmPackageDownloader(download_dir)
         if is_connected():
             package_downloader.download_multiple(packages)
         else:

@@ -2,7 +2,7 @@ from __future__ import print_function, unicode_literals
 from utils.utils import (check_file_in_dir, print_to_command_line,
                         FILES_TO_PARSE_PER_TOOL)
 from analyser.parsers.npm import NpmFileParser
-from downloader.npm import MultiPackageDownloader
+from downloader.main import MultiPackageDownloader
 from scanner.main import PkgScanner
 
 
@@ -45,10 +45,13 @@ class NpmPackageManager(object):
             self.download_npm_pkg(dep_list)
 
     def download_npm_pkg(self, dep_list):
-        downloader = MultiPackageDownloader(self.project_dir, dep_list, 15)
+        print("dep_list")
+        print(dep_list)
+        downloader = MultiPackageDownloader(self.project_dir, dep_list, 10)
         # print("downloader", downloader._package_groups)
-        downloader.start()
-        self.scan_pkg(self.project_dir)
+        # downloader.start()
+        # downloader.wait()
+        # self.scan_pkg(self.project_dir)
 
     def scan_pkg(self, pkg_dir):
         PkgScanner(pkg_dir)

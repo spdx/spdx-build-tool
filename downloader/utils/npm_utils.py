@@ -84,10 +84,6 @@ async def copyfileobj(fsrc, fdst, length=16 * 1024):
 def multi_pop(queue, count=10):
     items = []
     try:
-        print("Count_____________")
-        print(count)
-        print(queue)
-        print("sfdljnsdlfjkn")
         for _ in range(count):
             items.append(queue.pop())
     except IndexError:

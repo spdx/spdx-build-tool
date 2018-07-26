@@ -41,14 +41,12 @@ class NpmPackageManager(object):
         if self.json_obj.devDependencies:
             dep_list = dep_list + list(self.json_obj.devDependencies.items())
         self.dep_list = dep_list
-        if not self.in_tests:
-            self.download_npm_pkg(dep_list)
+        self.scan_pkg(self.project_dir)
+        # if not self.in_tests:
+        #     self.download_npm_pkg(dep_list)
 
     def download_npm_pkg(self, dep_list):
-        print("dep_list")
-        print(dep_list)
-        downloader = MultiPackageDownloader(self.project_dir, dep_list, 10)
-        # print("downloader", downloader._package_groups)
+        MultiPackageDownloader(self.project_dir, dep_list, 10)
         # downloader.start()
         # downloader.wait()
         # self.scan_pkg(self.project_dir)

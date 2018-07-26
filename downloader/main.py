@@ -20,6 +20,7 @@ class MultiPackageDownloader:
     def __init__(self, directory_to_scan, pkg_list, num_workers=10):
         self.directory_to_scan = directory_to_scan
         self.pkg_list = pkg_list
+        self.pkf_file_list = ''
         self.download_dir = '{0}{1}'.format(
             normalize_path(self.directory_to_scan), TEMP_DIR)
         self.node_modules_dir = '{0}node_modules'.format(
@@ -31,6 +32,7 @@ class MultiPackageDownloader:
     def create_dep_file(self):
         file_to_write = '{0}pkg_list.txt'.format(
             normalize_path(self.download_dir))
+        self.pkf_file_list = file_to_write
         pkg_list_file = open(file_to_write, 'w+')
         for item in self.pkg_list:
             if os.path.exists(self.node_modules_dir):
@@ -39,6 +41,7 @@ class MultiPackageDownloader:
             else:
                 pkg_list_file.write("{0}@{1}\n".format(item[0], item[1]))
         pkg_list_file.close()
+        # self.download_items()
 
 
     def copy_pkg_to_temp(self, pkg_name):
@@ -59,6 +62,11 @@ class MultiPackageDownloader:
         if pkg_exists:
             self.copy_pkg_to_temp(pkg_name)
         return pkg_exists
+
+    def download_items(self):
+        print("download_cmd")
+        download_cmd = "python -m npmdownloader -f {0} -o {1} -c 15".format(self.pkf_file_list, self.download_dir)
+        os.popen(download_cmd).read()
 
 
 

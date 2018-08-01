@@ -38,7 +38,7 @@ In the "spdx" folder, run `source bin/activate`.
 This will activate the virtual environment for the project.
 
 ### 4. Install the project requirements.
-Now run the command `pip install -r build-tool/requirements.txt`.
+Now run the command `pip install -r spdx-build-tool/requirements.txt`.
 
 ### 5. Install the project.
 cd into the directory "build-tool", ie `cd spdx-build-tool`.

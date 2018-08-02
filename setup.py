@@ -56,7 +56,7 @@ PYTEST_FLAGS = ['--doctest-modules']
 # metadata has no dependencies, otherwise they will need to be added to
 # the setup_requires keyword.
 metadata = imp.load_source(
-    'metadata', os.path.join(CODE_DIRECTORY, 'metadata.py'))
+    'metadata', os.path.join(ROOT_DIR, 'spdx_build_tool/metadata.py'))
 
 
 ## Miscellaneous helper functions
@@ -275,8 +275,6 @@ setup_dict = dict(
         'flake8==2.1.0',
         'idna==2.6',
         'idna-ssl==1.0.1',
-        'ipython==6.4.0',
-        'ipython-genutils==0.2.0',
         'jedi==0.12.0',
         'Jinja2==2.7.1',
         'MarkupSafe==0.18',

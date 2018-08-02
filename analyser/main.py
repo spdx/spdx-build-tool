@@ -33,7 +33,8 @@ def main(argv):
     """
     # First argument must be the project directory
     print("argv", argv)
-    return analyse_dir(True, argv[1])
+    analyse_dir(True, argv[1])
+    sys.exit(0)
     # epilog = '''
     #         {project} {version}
     #

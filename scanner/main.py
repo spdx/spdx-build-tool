@@ -16,7 +16,7 @@ class PkgScanner:
 
     def __init__(self, directory_to_scan):
         self.directory_to_scan = directory_to_scan
-        self.SCANCODE_PATH = os.path.join(ROOT_DIR, 'scancode-toolkit-2.2.1')
+        self.SCANCODE_PATH = os.path.join(directory_to_scan, 'scancode-toolkit-2.2.1')
         self.EXTRACT_CODE_PATH = ''
         self.CONFIG_PATH = ''
         self.SCANCODE_EXE_PATH = ''
@@ -24,6 +24,8 @@ class PkgScanner:
 
 
     def download_scancode(self):
+        print(self.SCANCODE_PATH)
+        os.chdir(os.path.abspath(self.directory_to_scan))
         download_command = "pip download {0} --no-deps".format(
             SCANCODE_DOWNLOAD_PATH)
         scancode_exists = os.path.exists(self.SCANCODE_PATH)
@@ -64,7 +66,7 @@ class PkgScanner:
         print_to_command_line("directory to scan", "title")
         print_to_command_line(self.directory_to_scan, "success")
         os.chdir(os.path.abspath(self.SCANCODE_PATH))
-        ignore_pattern = "**/NO-DIRECTORY/**"
+        ignore_pattern = "**/scancode-toolkit-2.2.1/**"
         spdx_rdf_filename = '{0}{1}-build-tool-rdf.spdx'.format(
             self.directory_to_scan, self.directory_to_scan.split("/")[-2])
         spdx_tv_filename = '{0}{1}-build-tool-tv.spdx'.format(

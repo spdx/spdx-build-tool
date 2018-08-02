@@ -13,6 +13,7 @@ import socket
 SCANCODE_DOWNLOAD_PATH = "https://github.com/nexB/scancode-toolkit/releases/download/v2.2.1/scancode-toolkit-2.2.1.zip"
 REMOTE_SERVER = "www.google.com"
 TEMP_DIR = 'build_tool_tmp_dir'
+SCANCODE_DIR = 'scancode-toolkit-2.2.1'
 SUPPORTED_BUILD_TOOLS = [
     'npm', 'pip'
 ]
@@ -137,7 +138,11 @@ def create_tmp_dir(project_dir):
 
 def delete_tmp_dir(project_dir):
     temp_directory = '{0}{1}'.format(normalize_path(project_dir), TEMP_DIR)
-    shutil.rmtree(temp_directory)
+    scancode_directory = '{0}{1}'.format(normalize_path(project_dir), SCANCODE_DIR)
+    if os.path.exists(temp_directory):
+        shutil.rmtree(temp_directory)
+    if os.path.exists(scancode_directory):
+        shutil.rmtree(scancode_directory)
     return
 
 

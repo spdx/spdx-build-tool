@@ -51,11 +51,12 @@ class PkgScanner:
         temp_directory = '{0}{1}'.format(
             normalize_path(self.directory_to_scan), TEMP_DIR)
         os.chdir(os.path.abspath(self.SCANCODE_PATH))
-        for filename in os.listdir(temp_directory):
-            extract_str = "./extractcode {0}{1}{2}".format(
-                normalize_path(self.directory_to_scan),
-                normalize_path(TEMP_DIR), filename)
-            os.popen(extract_str).read()
+        if os.path.exists(temp_directory):
+            for filename in os.listdir(temp_directory):
+                extract_str = "./extractcode {0}{1}{2}".format(
+                    normalize_path(self.directory_to_scan),
+                    normalize_path(TEMP_DIR), filename)
+                os.popen(extract_str).read()
         return
 
     def scan(self):

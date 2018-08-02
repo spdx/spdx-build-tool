@@ -78,6 +78,7 @@ class PkgScanner:
         os.popen(rdf_scan_str).read()
         os.popen(tv_scan_str).read()
         delete_tmp_dir(self.directory_to_scan)
+        return
 
 
 def main(argv):

@@ -1,0 +1,6 @@
+{
+  "tests/test_analyser.py::TestAnalyser": true,
+  "tests/test_main.py::TestMain": true,
+  "tests/test_main.py::TestMain::()": true,
+  "tests/test_utils.py::TestUtils::()::test_two": true
+}

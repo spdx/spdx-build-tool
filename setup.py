@@ -6,6 +6,10 @@ import sys
 import imp
 import subprocess
 
+
+# Project root
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 ## Python 2.6 subprocess.check_output compatibility. Thanks Greg Hewgill!
 if 'check_output' not in dir(subprocess):
     def check_output(cmd_args, *args, **kwargs):
@@ -52,7 +56,7 @@ PYTEST_FLAGS = ['--doctest-modules']
 # metadata has no dependencies, otherwise they will need to be added to
 # the setup_requires keyword.
 metadata = imp.load_source(
-    'metadata', os.path.join(CODE_DIRECTORY, 'metadata.py'))
+    'metadata', os.path.join(ROOT_DIR, 'spdx_build_tool/metadata.py'))
 
 
 ## Miscellaneous helper functions
@@ -193,7 +197,8 @@ def _test_all():
 
     :return: exit code
     """
-    return _lint() + _test()
+    # return _lint() + _test()
+    return _test()
 
 
 # The following code is to allow tests to be run with `python setup.py test'.
@@ -255,6 +260,49 @@ setup_dict = dict(
     packages=find_packages(exclude=(TESTS_DIRECTORY,)),
     install_requires=[
         # your module dependencies
+        'aiofiles==0.3.2',
+        'aiohttp==2.3.1',
+        'async-timeout==3.0.0',
+        'asyncio==3.4.3',
+        'atomicwrites==1.1.5',
+        'attrs==18.1.0',
+        'backcall==0.1.0',
+        'chardet==3.0.4',
+        'colorama==0.2.7',
+        'decorator==4.3.0',
+        'docutils==0.11',
+        'fasteners==0.14.1',
+        'flake8==2.1.0',
+        'idna==2.6',
+        'idna-ssl==1.0.1',
+        'jedi==0.12.0',
+        'Jinja2==2.7.1',
+        'MarkupSafe==0.18',
+        'mccabe==0.2.1',
+        'mock==1.0.1',
+        'monotonic==1.5',
+        'more-itertools==4.2.0',
+        'multidict==4.3.1',
+        'npm==0.1.1',
+        'optional-django==0.1.0',
+        'parso==0.2.1',
+        'Paver==1.2.1',
+        'pep8==1.4.6',
+        'pexpect==4.5.0',
+        'pickleshare==0.7.4',
+        'pluggy==0.6.0',
+        'prompt-toolkit==1.0.15',
+        'ptyprocess==0.5.2',
+        'py==1.5.4',
+        'pyflakes==2.0.0',
+        'Pygments==1.6',
+        'pytest==3.6.3',
+        'semver==2.8.0',
+        'simplegeneric==0.8.1',
+        'six==1.11.0',
+        'traitlets==4.3.2',
+        'wcwidth==0.1.7',
+        'yarl==1.2.4'
     ] + python_version_specific_requires,
     # Allow tests to be run with `python setup.py test'.
     tests_require=[
@@ -266,12 +314,8 @@ setup_dict = dict(
     zip_safe=False,  # don't use eggs
     entry_points={
         'console_scripts': [
-            'spdx_build_tool_cli = spdx_build_tool.main:entry_point'
+            'spdx-build = analyser.main:entry_point',
         ],
-        # if you have a gui, use this
-        # 'gui_scripts': [
-        #     'spdx_build_tool_gui = spdx_build_tool.gui:entry_point'
-        # ]
     }
 )
 

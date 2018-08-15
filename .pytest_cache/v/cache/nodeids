@@ -1,0 +1,9 @@
+[
+  "tests/test_analyser.py::TestAnalyser::()::test_npm_analyser",
+  "tests/test_analyser.py::TestAnalyser::()::test_pip_analyser",
+  "tests/test_utils.py::TestUtils::()::test_normalize_path",
+  "tests/test_utils.py::TestUtils::()::test_normalize_file_path",
+  "tests/test_utils.py::TestUtils::()::test_check_file_in_dir",
+  "tests/test_utils.py::TestUtils::()::test_determine_build_tool",
+  "tests/test_utils.py::TestUtils::()::test_temp_dir"
+]

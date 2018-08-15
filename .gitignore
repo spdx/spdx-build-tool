@@ -36,3 +36,11 @@ pip-log.txt
 
 ## paver generated files
 /paver-minilib.zip
+
+## Scancode toolkit
+scancode-toolkit-2.2.1/
+
+spdx_build_tool.egg-info/
+__pycache__/
+docs/
+*.zip

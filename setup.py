@@ -261,7 +261,7 @@ setup_dict = dict(
     install_requires=[
         # your module dependencies
         'aiofiles==0.3.2',
-        'aiohttp==2.3.1',
+        'aiohttp==3.7.4',
         'async-timeout==3.0.0',
         'asyncio==3.4.3',
         'atomicwrites==1.1.5',

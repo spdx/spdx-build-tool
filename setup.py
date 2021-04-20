@@ -295,7 +295,7 @@ setup_dict = dict(
         'ptyprocess==0.5.2',
         'py==1.10.0',
         'pyflakes==2.0.0',
-        'Pygments==1.6',
+        'Pygments==2.7.4',
         'pytest==3.6.3',
         'semver==2.8.0',
         'simplegeneric==0.8.1',
